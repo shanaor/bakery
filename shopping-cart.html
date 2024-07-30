@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - John Bryce Bakery</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background: #007bff;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 5px;
+        }
+
+        .remove-button {
+            background-color: #dc3545;
+        }
+
+        .remove-button:hover {
+            background-color: #c82333;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-controls button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .quantity-controls input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Homepage</a></li>
+            <li><a href="cakes.html">Cakes</a></li>
+            <li><a href="article.html">Article</a></li>
+            <li><a href="shopping-cart.html">Shopping Cart</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Almost Caked and Rolled</h1>
+        <hr>
+    </header>
+
+    <div class="container">
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </tbody>
+        </table>
+
+        <div class="cart-total">
+            <strong>Total Price: $<span id="total-price">0.00</span></strong>
+        </div>
+
+        <a href="index.html" class="button">Continue Shopping</a>
+        <a href="checkout.html" class="button">Let's Pay</a>
+    </div>
+
+    <script>
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartTableBody = document.getElementById('cart-items');
+            cartTableBody.innerHTML = ''; // Clear previous items
+
+            let totalPrice = 0;
+
+            cart.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>$${item.price.toFixed(2)}</td>
+                    <td class="quantity-controls">
+                        <button onclick="updateQuantity(${index}, -1)">-</button>
+                        <input type="number" id="quantity-${index}" value="${item.quantity}" min="0" readonly>
+                        <button onclick="updateQuantity(${index}, 1)">+</button>
+                    </td>
+                    <td>${item.total ? '$' + item.total.toFixed(2) : '$0.00'}</td>
+                    <td><button class="button remove-button" onclick="removeFromCart(${index})">Remove Cake</button></td>
+                `;
+                cartTableBody.appendChild(row);
+                totalPrice += item.total || 0; // Ensure item.total is a number or default to 0
+            });
+
+            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+        }
+
+        function updateQuantity(index, delta) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let item = cart[index];
+
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity < 0) item.quantity = 0;
+                item.total = item.price * item.quantity;
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                loadCart();
+            }
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Remove the item from the array
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart(); // Reload the cart display
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCart);
+    </script>
+</body>
+</html>

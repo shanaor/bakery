@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Cake - John Bryce Bakery</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Light background color */
+            color: #333; /* Dark text color */
+            display: flex; /* Flexbox layout for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add padding for content */
+        }
+
+        .container {
+            max-width: 600px; /* Limit container width */
+            background-color: #fff; /* White background */
+            padding: 20px; /* Padding inside container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            border-radius: 10px; /* Rounded corners */
+            text-align: center; /* Center align text */
+        }
+
+        .cake-image {
+            width: 100%; /* Full width within container */
+            max-width: 400px; /* Limit image size */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 300px; /* Maximum height of the image */
+            border-radius: 10px; /* Rounded corners */
+            margin-bottom: 20px; /* Space below image */
+        }
+
+        .section {
+            margin-bottom: 20px; /* Space below each section */
+            text-align: left; /* Align text inside sections to the left */
+            color: #666; /* Section text color */
+        }
+
+        h1 {
+            color: #6c757d; /* Header color */
+        }
+
+        hr {
+            border-color: #6c757d; /* Horizontal rule color */
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        h2 {
+            color: #dc3545; /* Section title color */
+        }
+
+        p {
+            color: #777; /* Paragraph text color */
+        }
+
+        .button {
+            background-color: #dc3545; /* Button background color */
+            color: white; /* Button text color */
+            padding: 10px 15px; /* Padding inside button */
+            text-decoration: none; /* Remove underline */
+            border-radius: 5px; /* Rounded corners */
+            display: inline-block; /* Inline display */
+            margin: 10px 5px; /* Margin around button */
+            transition: background-color 0.3s ease; /* Smooth hover effect */
+        }
+
+        .button:hover {
+            background-color: #c82333; /* Darker shade on hover */
+        }
+    </style>
+    <script>
+        function addToCart() {
+            let cake = {
+                name: "Chocolate Cake",
+                price: 33.00,
+                quantity: parseInt(document.getElementById('quantity').value)
+            };
+
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            let existingItem = cartItems.find(item => item.name === cake.name);
+
+            if (existingItem) {
+                existingItem.quantity += cake.quantity;
+            } else {
+                cartItems.push(cake);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            alert('Chocolate Cake added to cart!');
+            window.location.href = 'shopping-cart.html';
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Your HTML content for Chocolate Cake page -->
+    <div class="container">
+        <h1>Chocolate Cake</h1>
+        <hr>
+        <img src="https://www.mybakingaddiction.com/wp-content/uploads/2011/10/lr-0938-700x1050.jpg" alt="Chocolate Cake" class="cake-image">
+
+        <div class="section">
+            <h2>About the Cake</h2>
+            <p>Chocolate Cake is a decadent dessert with rich chocolate layers and smooth chocolate frosting.</p>
+        </div>
+
+        <div class="section">
+            <h2>Ingredients</h2>
+            <p>Flour, cocoa powder, sugar, butter, eggs, vanilla extract, milk.</p>
+        </div>
+
+        <div class="section">
+            <h2>Storage</h2>
+            <p>Keep in a cool, dry place. Refrigerate if storing for more than a few days.</p>
+        </div>
+
+        <div class="section">
+            <h2>Price</h2>
+            <p>$33.00</p>
+        </div>
+
+        <div class="section">
+            <h2>Quantity</h2>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+        </div>
+
+        <div class="section">
+            <a href="#" onclick="addToCart()" class="button">Add to Shopping Cart</a>
+        </div>
+
+        <div class="section">
+            <a href="cakes.html" class="button">Back to Cakes</a>
+        </div>
+    </div>
+</body>
+
+</html>

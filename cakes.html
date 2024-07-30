@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cakes - John Bryce Bakery</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background: #007bff;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border-color: #007bff;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        .cakes-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .cake-item {
+            text-align: center;
+            width: 200px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .cake-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .cake-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .cake-item p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Homepage</a></li>
+            <li><a href="cakes.html">Cakes</a></li>
+            <li><a href="article.html">Article</a></li>
+            <li><a href="shopping-cart.html">Shopping Cart</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Here Are Our Delicious Cakes!</h1>
+        <hr>
+    </header>
+
+    <div class="container">
+        <div class="cakes-list">
+            <div class="cake-item">
+                <img src="https://www.eatingbirdfood.com/wp-content/uploads/2023/07/healthy-vanilla-cake-hero.jpg" alt="Vanilla Cake">
+                <p>Vanilla Cake</p>
+                <a href="vanilla-cake.html" class="button">More Info</a>
+            </div>
+            <div class="cake-item">
+                <img src="https://cakemehometonight.com/wp-content/uploads/2023/02/24.jpg" alt="Red Velvet Cake">
+                <p>Red Velvet Cake</p>
+                <a href="red-velvet-cake.html" class="button">More Info</a>
+            </div>
+            <div class="cake-item">
+                <img src="https://cakemehometonight.com/wp-content/uploads/2023/04/2.jpg" alt="Lemon Cake">
+                <p>Lemon Cake</p>
+                <a href="lemon-cake.html" class="button">More Info</a>
+            </div>
+            <div class="cake-item">
+                <img src="https://bonnibakery.com/wp-content/uploads/2021/01/ChocolateCake-2-scaled.jpg" alt="Chocolate Cake">
+                <p>Chocolate Cake</p>
+                <a href="chocolate-cake.html" class="button">More Info</a>
+            </div>
+            <div class="cake-item">
+                <img src="https://www.splenda.com/wp-content/uploads/2020/05/american-classic-cheesecake-scaled.jpg" alt="Cheesecake">
+                <p>Cheesecake</p>
+                <a href="cheesecake.html" class="button">More Info</a>
+            </div>
+            <div class="cake-item">
+                <img src="https://inbloombakery.com/wp-content/uploads/2022/04/carrot-cake-featured-image.jpg" alt="Carrot Cake">
+                <p>Carrot Cake</p>
+                <a href="carrot-cake.html" class="button">More Info</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

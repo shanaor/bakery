@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheesecake - John Bryce Bakery</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa; /* Lighter background color */
+            color: #444; /* Slightly darker text color */
+            display: flex; /* Flexbox layout for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add padding for content */
+        }
+
+        .container {
+            max-width: 600px; /* Limit container width */
+            background-color: #fff; /* White background */
+            padding: 30px; /* Increased padding inside container */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+            border-radius: 15px; /* Slightly rounded corners */
+            text-align: center; /* Center align text */
+        }
+
+        .cake-image {
+            width: 100%; /* Full width within container */
+            max-width: 400px; /* Limit image size */
+            border-radius: 15px; /* Rounded corners */
+            margin-bottom: 20px; /* Space below image */
+        }
+
+        .section {
+            margin-bottom: 25px; /* Increased space below each section */
+            text-align: left; /* Align text inside sections to the left */
+            color: #666; /* Section text color */
+        }
+
+        h1 {
+            color: #6c757d; /* Header color */
+            font-size: 2.5em; /* Larger font size for header */
+            margin-bottom: 10px; /* Space below header */
+        }
+
+        hr {
+            border-color: #6c757d; /* Horizontal rule color */
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        h2 {
+            color: #dc3545; /* Section title color */
+            font-size: 1.5em; /* Larger font size for section titles */
+            margin-bottom: 15px; /* Space below section titles */
+        }
+
+        p {
+            color: #777; /* Paragraph text color */
+            line-height: 1.6; /* Increased line height for better readability */
+        }
+
+        .button {
+            background-color: #dc3545; /* Button background color */
+            color: white; /* Button text color */
+            padding: 12px 20px; /* Increased padding inside button */
+            text-decoration: none; /* Remove underline */
+            border-radius: 5px; /* Rounded corners */
+            display: inline-block; /* Inline display */
+            margin: 15px 10px; /* Increased margin around button */
+            transition: background-color 0.3s ease; /* Smooth hover effect */
+            font-size: 1.1em; /* Increased font size for button */
+        }
+
+        .button:hover {
+            background-color: #c82333; /* Darker shade on hover */
+        }
+    </style>
+    <script>
+        function addToCart() {
+            let cake = {
+                name: "Cheesecake",
+                price: 36.00,
+                quantity: parseInt(document.getElementById('quantity').value)
+            };
+
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            let existingItem = cartItems.find(item => item.name === cake.name);
+
+            if (existingItem) {
+                existingItem.quantity += cake.quantity;
+            } else {
+                cartItems.push(cake);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            alert('Cheesecake added to cart!');
+            window.location.href = 'shopping-cart.html';
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Your HTML content for Cheesecake page -->
+    <div class="container">
+        <h1>Cheesecake</h1>
+        <hr>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9J2HQ6l-8RdQEFlwovsDbT4pFtsACgVJZLxStBRR205V7_TdtDLVFryhLwLgr3YHFO7A&usqp=CAU" alt="Cheesecake" class="cake-image">
+
+        <div class="section">
+            <h2>About the Cake</h2>
+            <p>Cheesecake is a creamy and smooth dessert with a graham cracker crust and topped with fresh berries.</p>
+        </div>
+
+        <div class="section">
+            <h2>Ingredients</h2>
+            <p>Cream cheese, sugar, eggs, vanilla extract, sour cream, butter, graham crackers.</p>
+        </div>
+
+        <div class="section">
+            <h2>Storage</h2>
+            <p>Refrigerate to maintain freshness. Best served chilled.</p>
+        </div>
+
+        <div class="section">
+            <h2>Price</h2>
+            <p>$36.00</p>
+        </div>
+
+        <div class="section">
+            <h2>Quantity</h2>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+        </div>
+
+        <div class="section">
+            <a href="#" onclick="addToCart()" class="button">Add to Shopping Cart</a>
+        </div>
+
+        <div class="section">
+            <a href="cakes.html" class="button">Back to Cakes</a>
+        </div>
+    </div>
+</body>
+
+</html>

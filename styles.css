@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #f8f8f8;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+header h1 {
+    text-align: center;
+}
+
+hr {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.image-slot {
+    text-align: center;
+    margin-bottom: 20px; /* Space between each image slot */
+}
+
+.image-slot img {
+    width: 15cm;
+    height: 10cm;
+    display: block;
+    margin: 0 auto;
+}
+
+.slideshow-container {
+    position: relative;
+    margin: 20px auto; /* Center horizontally with margin and add top and bottom margin */
+    max-width: 800px; /* Adjust as per your design */
+    text-align: center; /* Center align the container content */
+}
+
+.slideshow-container .mySlides {
+    display: none;
+}
+
+.slideshow-container img {
+    width: 100%;
+    height: auto;
+}
